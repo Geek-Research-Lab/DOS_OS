@@ -8,4 +8,4 @@ Practical self-learning and self-coding...
 Contributions are highly welcome here :) And anybody can use it... It is 100% free and opensource.. :) Hope you make best use of it more than i did!
 
 
-After completion of existing one, then i will be taking next step in updating it... Let's see where it takes! =P
+After completion of existing one, then i will be taking next step in updating it an updated one in a new repository... Let's see where it takes me fellas! =P
