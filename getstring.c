@@ -34,7 +34,7 @@ if((p=malloc(size+1))!=NULL)
 				memcpy(p,buffer,cursor);
 				memcpy(p+cursor,buffer+cursor,(l-cursor)+1);
 				strcpy(buffer,p);
-				i=printf("%s%c",buffer+cursor,'');
+				i=printf("%s%c",buffer+cursor,' ');
 				while(i)
 				{
 					putch(0X08);
@@ -91,7 +91,7 @@ if((p=malloc(size+1))!=NULL)
 					--cursor;
 					*(buffer+1)=0;
 					putch(0X08);
-					putch('');
+					putch(' ');
 					putch(0X08);
 				}
 			} else if(cursor < 1 && cursor > 0)
@@ -100,7 +100,7 @@ if((p=malloc(size+1))!=NULL)
 				memcpy(p,buffer,cursor);
 				memcpy(p+cursor,buffer+cursor,(l-cursor)+1);
 				strcpy(buffer,p);
-				i=printf("%c%s%c",0x08,buffer+cursor,'')-1;
+				i=printf("%c%s%c",0x08,buffer+cursor,' ')-1;
 				while(i)
 				{
 					putch(0X08);
@@ -117,7 +117,7 @@ if((p=malloc(size+1))!=NULL)
 			while(l--)
 			{
 				putch(0X08);
-				putch('');
+				putch(' ');
 				putch(0X08);
 			}
 			cursor=0;
