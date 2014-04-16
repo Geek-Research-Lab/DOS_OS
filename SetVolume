@@ -1,0 +1,33 @@
+/* Code Snippets */
+SetVolume(drive,name)
+int drive;
+char *name;
+union REGS r;
+struct SREGS sr;
+struct xfcb f;
+char *dta,b[64],s[16];
+if(testdisk(drive))
+return(1);
+dta=getdta();
+setdta(b);
+sprintf(s,"%-11.11s",name);
+memset((char *)&r,0,sizeof(struct xfcb));
+f.xfcb_flag=0Xff;
+f.xfcb_attr=0X08;
+f.xfcb_fcb.fcb_drive=drive+1;
+memset(f.xfcb_fcb.fcb_name,'?',11);
+r.x.ax=0X1100;
+r.x.dx=FF_OFF((char *)&f);
+sr.ds=FP_SEG((char *)&f);
+int86x(0X21,&r,&r,&sr);
+if(r.h.a1==0X00)
+{
+memcpy(f.xfcb_fcb.fcb_ext+8,s,11);
+r.x.ax=0X1700;
+r.x.dx=FP_OFF((char *)&f);
+sr.ds=FP_SEG((char *)&f);
+int86x(0X21,&r,&r,&sr);
+}
+setdta(dta);
+return((int)r.h.a1 & 0X00ff);
+}
